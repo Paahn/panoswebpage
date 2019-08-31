@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-const HeadComponent = ({ title }) => {
+export default function HeadComponent ({ title }) {
     const data = useStaticQuery(graphql`
     query{
         site {
@@ -11,9 +11,10 @@ const HeadComponent = ({ title }) => {
             }
         }
     }`)
+
     return (
-        <Helmet title={`${title} | ${data.site.siteMetadata.title}`} />
+        <div>
+            <Helmet title={`${title} | ${data.site.siteMetadata.title}`} />
+        </div>
     )
 }
-
-export default HeadComponent
